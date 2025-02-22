@@ -1,0 +1,78 @@
+.model small
+.stack 100h
+
+.data
+    msg db ' HELLO EMU8086! '   
+    msg_len equ $ - msg          
+
+.code
+main proc
+    mov ax, @data
+    mov ds, ax
+
+    mov ah, 0
+    mov al, 3
+    int 10h
+    
+scroll_loop:
+    call clear_screen
+
+    mov ax, 80          
+    sub ax, msg_len      
+    shr ax, 1           
+    mov dl, al      
+
+    mov ah, 02h
+    mov bh, 0           
+    mov dh, 12          
+    int 10h
+
+    mov si, 0
+display_loop:
+    mov ah, 0Eh        
+    mov bh, 0          
+    mov bl, 07h        
+    
+    mov al, [msg + si]  
+    int 10h             
+    inc si              
+    cmp si, msg_len     
+    jl display_loop    
+
+    call delay
+    call shift_right    
+    jmp scroll_loop     
+
+clear_screen proc
+    mov ah, 06h       
+    mov al, 0           
+    mov bh, 07h        
+    mov cx, 0          
+    mov dx, 184Fh      
+    int 10h
+    ret
+clear_screen endp
+
+delay proc
+    mov cx, 0FFFFh      
+delay_loop:
+    loop delay_loop
+    ret
+delay endp
+
+shift_right proc
+   
+    mov al, [msg + msg_len - 1]
+
+    mov si, msg_len - 1
+shift_loop:
+    mov ah, [msg + si - 1]
+    mov [msg + si], ah
+    dec si
+    jnz shift_loop
+
+    mov [msg], al
+    ret
+shift_right endp
+
+end main
