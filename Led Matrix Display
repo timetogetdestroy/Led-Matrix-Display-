@@ -2,7 +2,7 @@
 .stack 100h
 
 .data
-    msg db ' HELLO EMU8086! '   
+    msg db ' ILAM DEEN__4526 '   
     msg_len equ $ - msg          
 
 .code
