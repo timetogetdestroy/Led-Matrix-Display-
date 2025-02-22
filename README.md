@@ -1,2 +1,45 @@
 # Led-Matrix-Display-
-This project demonstrates a software simulation of an LED Matrix Display using 8086 assembly language in EMU8086. It features a scrolling text effect where the message shifts dynamically across the screen. The implementation uses BIOS interrupts to control text positioning and rendering in 80x25 text mode.
+
+This project is a software-based LED matrix display simulation programmed in 8086 assembly language. It demonstrates scrolling text functionality by continuously shifting characters across the screen. The program utilizes BIOS interrupt calls for text rendering and screen manipulation, making it a great learning project for interfacing with low-level hardware controls.
+
+FEATURES:
+
+✔️ Scrolling Text – The text message moves from right to left continuously.
+
+✔️ Screen Clearing – Ensures a smooth display without overlapping characters.
+
+✔️ Delay Mechanism – Adds a delay to control scrolling speed.
+
+✔️ Assembly Language Implementation – Uses 8086 assembly and EMU8086 emulator.
+
+HOW IT WORKS:
+
+1- The message is stored in memory and displayed at the center of the screen.
+
+2- A loop continuously shifts the text one character to the right.
+
+3- The screen is cleared before displaying the updated text.
+
+4- A delay function is used to control the speed of the scrolling effect.
+
+REQUIREMENTS:
+
+1- EMU8086 Emulator (or any x86 assembly simulator)
+
+2- Basic knowledge of 8086 assembly language
+
+USAGE:
+
+1- Load the code in EMU8086.
+
+2- Run the program to see the scrolling text animation.
+
+3- Modify the msg variable to display custom text.
+
+APPLICATIONS:
+
+✅ Visual text displays
+
+✅ Learning hardware interfacing with LED matrices
+
+✅ Understanding BIOS interrupt-based screen control
